@@ -1,0 +1,51 @@
+---
+title: "Ashini's Report"
+date: "28 Sep 2014"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+setwd("~/Desktop/Software-bootcamp/data/")
+data.in <- read.delim("data.csv", header = TRUE)
+data.albania <- subset(data.in, country=="Albania")
+data.greece <- subset(data.in, country=="Greece")
+data.belgium <- subset(data.in, country=="Belgium")
+albania.x <- data.albania[,2]
+greece.x <- data.greece[,2]
+belgium.x <- data.belgium[,2]
+albania.y <- data.albania[,6]
+greece.y <- data.greece[,6]
+belgium.y <- data.belgium[,6]
+plot(albania.x, albania.y, main="Albania", xlab="YEAR", ylab="GDP") 
+plot(greece.x, greece.y, main="Greece", xlab="YEAR", ylab="GDP") 
+plot(belgium.x, belgium.y, main="Belgium", xlab="YEAR", ylab="GDP") 
+
+```
+
+Belgium has the highest rate of GDP per capital as compared to Alabania and Greece. These plots were prepared using R. Greece and Albania also had a increase in thse years.
+
+```{r}
+#data.continent <- unique(data.in[4])
+#print(data.continent)
+continentmean <- aggregate(data.in[5], by=data.in[4], mean)
+continentmin <- aggregate(data.in[5], by=data.in[4], min)
+continentmax <- aggregate(data.in[5], by=data.in[4], max)
+print("The mean of life expectancy in each continent is:")
+print(continentmean)
+print("The minimum life expectancy in each continent is:")
+print(continentmin)
+print("The maximum life expectancy in each continent is:")
+print(continentmax)
+```
+
+Oceania has the highest and Africa has the lowest mean life expectancy among all the six continents.
+Overall Oceania is the best continent to live.
+
+```{r}
+
+```
+
